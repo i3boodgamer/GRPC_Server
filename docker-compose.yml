@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build: ../grpctz2
+    ports:
+      - "50054:50054"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: GRPC
+      POSTGRES_HOST: db
+      DATABASE_URL: postgresql+asyncpg://postgres:123456@db:5432/GRPC
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: GRPC
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../grpctz2/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql

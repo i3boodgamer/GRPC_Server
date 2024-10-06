@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+import "google/protobuf/empty.proto";
+
+message Data {
+    required float Decimal1 = 1;
+    required float Decimal2 = 2;
+    required float Decimal3 = 3;
+    required float Decimal4 = 4;
+    required int64 Timestamp = 5;
+}
+
+message Packet {
+    required int64 PacketTimestamp = 1;
+    required int32 PacketSeqNum = 2;
+    required int32 NRecords = 3;
+    repeated Data PacketData = 4;
+}
+
+message Ack {
+    optional bool ack = 1;
+}
+
+service DataService {
+    rpc SendPacket(Packet) returns (google.protobuf.Empty);
+}
