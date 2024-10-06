@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: ../grpctz2
+    build: .
     ports:
       - "50054:50054"
     environment:
