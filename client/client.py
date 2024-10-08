@@ -67,7 +67,7 @@ async def run_client(config_file):
 
     all_packet_sent = True
 
-    for packet_seq_num in range(16, total_packets + 1):
+    for packet_seq_num in range(3, total_packets + 1):
         packet = generate_packet(packet_seq_num, records_in_packet)
 
         try:
@@ -80,7 +80,6 @@ async def run_client(config_file):
             if e.code() == grpc.StatusCode.ALREADY_EXISTS:
                 logger.error(f"Error: {e.details()} - Данные в БД уже сущетсвуют.")
             elif e.code() == grpc.StatusCode.UNKNOWN:
-                print()
                 logger.error(f"Произошла неизвестная ошибка: {e.details()}")
             else:
                 logger.error(f"gRPC ошибка: {e.code()}, {e.details()}")

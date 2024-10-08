@@ -25,6 +25,8 @@ with open(settings.json_path.server) as config_file:
     config = json.load(config_file)
 
 
+
+
 class DataServiceServicer(data_pb2_grpc.DataServiceServicer):
     async def SendPacket(self, request, context):
         async with db_helper.session_factory() as session:

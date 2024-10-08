@@ -1,5 +1,5 @@
 {
-    "TotalPackets": 20,
+    "TotalPackets": 40,
     "RecordsInPacket": 3,
     "TimeInterval": 2,
     "gRPCServerAddr": "localhost",
